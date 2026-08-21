@@ -1,0 +1,46 @@
+#include <stdio.h>
+#define MAX 5
+
+int stack[MAX], top = -1;
+
+int main() {
+    int ch, x, i;
+
+    do {
+        printf("\n1.Push  2.Pop  3.Display  4.Exit\n");
+        scanf("%d", &ch);
+
+        switch(ch) {
+            case 1:
+                if(top == MAX-1)
+                    printf("Overflow");
+                else {
+                    printf("Enter value: ");
+                    scanf("%d", &x);
+                    stack[++top] = x;
+                }
+                break;
+
+            case 2:
+                if(top == -1)
+                    printf("Underflow");
+                else
+                    printf("Popped: %d", stack[top--]);
+                break;
+
+            case 3:
+                for(i = top; i >= 0; i--)
+                    printf("%d ", stack[i]);
+                break;
+
+            case 4:
+                printf("Exit");
+                break;
+
+            default:
+                printf("Invalid choice");
+        }
+    } while(ch != 4);
+
+    return 0;
+}
